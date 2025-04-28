@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    #define DIVISAO_MAX 9
+    int num, resto = 0;
+    int cont = 1;
+    
+    printf("Escreva um número para verificação: \n");
+    scanf("%d", &num);
+    
+    while( cont < DIVISAO_MAX ) {
+        resto = (num % cont);
+        cont = cont + 1;
+        if ( resto == 0 ) {
+                printf("O número %d é divisível por %d \n", num, cont);
+        
+        } else {
+                printf("O número %d não é divisível por %d \n", num, cont);
+            }
+        
+            
+    }
+
+}
