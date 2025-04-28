@@ -11,14 +11,13 @@ int main()
     
     while( cont < DIVISAO_MAX ) {
         resto = (num % cont);
-        cont = cont + 1;
         if ( resto == 0 ) {
                 printf("O número %d é divisível por %d \n", num, cont);
         
         } else {
                 printf("O número %d não é divisível por %d \n", num, cont);
             }
-        
+        cont = cont + 1;
             
     }
 
