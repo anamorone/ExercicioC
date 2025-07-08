@@ -11,7 +11,7 @@ int busca(int arr[], int key, int tam){
         }else if(arr[meio] < key){
             inicio = meio + 1;
         } else{
-            inicio = meio - 1;
+            fim = meio - 1;
         }
         
     }
