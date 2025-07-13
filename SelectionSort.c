@@ -13,10 +13,13 @@ void selection_sort(int arr[], int tam){
     for(prox = 0; prox < tam; prox++){
         if(arr[prox] < arr[min]){
             min = prox;
-            troca(arr, pos, min);
+            
         }
     
     }
+        if(min != pos){
+            troca(arr, pos, min);
+        }
     }
 }
 
