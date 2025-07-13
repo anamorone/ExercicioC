@@ -11,7 +11,7 @@ void selection_sort(int arr[], int tam){
     for(pos = 0; pos < tam; pos++){
         min = pos;
     for(prox = 0; prox < tam; prox++){
-        if(arr[min] < arr[prox]){
+        if(arr[prox] < arr[min]){
             min = prox;
             troca(arr, pos, min);
         }
