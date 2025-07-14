@@ -12,8 +12,8 @@ que, respectivamente, determina se tri é um triângulo válido, imprime o tipo 
 #include <stdbool.h>
 
 struct tp_cartesiano{
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 struct tp_triangulo{
@@ -22,23 +22,23 @@ struct tp_triangulo{
     struct tp_cartesiano p3;
 };
 
-int dist(struct tp_cartesiano a, struct tp_cartesiano b){
+int dist(struct tp_cartesiano p1, struct tp_cartesiano p2){
     
-    int distx = (a.x - b.x);
-    int disty = (a.y - b.y);
+    int distx = (p1.x - p2.x);
+    int disty = (p1.y - p2.y);
     return(sqrt((distx*distx) + (disty*disty)));
     
 }
 
-bool valido(int lado1, int lado2, int lado3){
-    if(lado1 + lado2 > lado3 || lado1 + lado3 > lado2 || lado2 + lado3 > lado1){
+bool valido(float lado1, float lado2, float lado3){
+    if(lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1){
         return true;
-    }
+    } return false;
 }
 
-void imprime(int lado1, int lado2, int lado3){
+void imprime(float lado1, float lado2, float lado3){
     int eq, is, esc;
-    if(lado1 == lado2 == lado3){
+    if(lado1 == lado2 && lado1 == lado3 && lado2 == lado3){
         printf("O triângulo é equilátero");    
     } else if(lado1 == lado2 || lado1 == lado3 || lado3 == lado2){
         printf("O triângulo é isósceles");
@@ -47,35 +47,35 @@ void imprime(int lado1, int lado2, int lado3){
     }
 }
 
-bool triangulo_ret(int lado1, int lado2, int lado3){
+bool triangulo_ret(float lado1, float lado2, float lado3){
     if(((lado1*lado1) == (lado2*lado2) + (lado3*lado3)) || ((lado2*lado2) == (lado3*lado3) + (lado1*lado1)) || ((lado3*lado3) == (lado2*lado2) + (lado1*lado1)) ){
         return true;
-    }
+    } return false;
 }
 
     
 int main(){
     
     struct tp_triangulo pontos;
-    int lado1, lado2, lado3;
+    float lado1, lado2, lado3;
     int i;
     
     printf("Digite os pontos do primeiro triângulo: \n");
-    scanf("%d%d", &pontos.p1.x, &pontos.p1.y);
+    scanf("%f%f", &pontos.p1.x, &pontos.p1.y);
     printf("Digite os pontos do segundo triângulo: \n");
-    scanf("%d%d", &pontos.p2.x, &pontos.p2.y);
+    scanf("%f%f", &pontos.p2.x, &pontos.p2.y);
     printf("Digite os pontos do terceiro triângulo: \n");
-    scanf("%d%d", &pontos.p3.x, &pontos.p3.y);
+    scanf("%f%f", &pontos.p3.x, &pontos.p3.y);
     
-    lado1 = dist(pontos.p1.x, pontos.p1.y);
-    lado2 = dist(pontos.p2.x, pontos.p2.y);
-    lado3 = dist(pontos.p3.x, pontos.p3.y);
+    lado1 = dist(pontos.p1, pontos.p2);
+    lado2 = dist(pontos.p1, pontos.p3);
+    lado3 = dist(pontos.p2, pontos.p3);
     
     if(valido(lado1, lado2, lado3) == 1){
         
         
         imprime(lado1, lado2, lado3);
-        if(triangulo_ret(lado, lado2, lado3) == 1){
+        if(triangulo_ret(lado1, lado2, lado3) == 1){
             printf("Esse triângulo é um triângulo retângulo");
         }else {
             printf("Esse triângulo não é um triângulo retângulo");
@@ -83,6 +83,8 @@ int main(){
         
         
         
+    }else {
+        printf("Esse triângulo não é valido.")
     }
     
     
