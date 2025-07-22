@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdbool.h>
 
-bool quad_perf(int num){
+int quad_perf(int num){
     int i, quad, cont;
     for(i = 0; i < num; i++){
         if(i * i == num){
